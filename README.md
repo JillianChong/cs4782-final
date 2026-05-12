@@ -1,4 +1,4 @@
-# PROJECT TITLE
+# How to Help Transformers Count
 
 ## Introduction
 
@@ -30,6 +30,34 @@ Re-implementation Approach:
 Challenges/Modifications: Because of Google Colab memory limts, we were constrained by our batch sizes and model input and output sequence length limits. We had to make modifications to the original approach by decreasing the batch size as well as model input and output max token sequence length.
 
 ## Reproduction Steps
+Main.ipynb:
+* Connect to GPU (We used T4 GPU).
+* In the 4th cell from the top, edit the desired details.
+    * model_size: "t5-small" or "t5-base"
+    * task: "add" or "subtract"
+    * representation: "digit", "character", "fixed character", "underscore", "words", "10based", "10ebased"
+    * D: maximum digit length, integer
+    * n_samples: Number of training and testing samples, integer
+    * output_dir_name: string name of folder to save model in after it has been fine-tuned
+* Running the notebook from top to bottom will: 
+    1. Generate training dataset.
+    2. Fine-tune the selected model using the training set.
+    3. Save the model to the desired location in Google Drive.
+    4. Compute the model accuracy using the generated testing set.
+
+Generalize.ipynb:
+* Connect to GPU (We used T4 GPU).
+* In the 4th cell from the top, edit the desired details.
+    * model_size: "t5-small" or "t5-base"
+    * task: "add" or "subtract"
+    * representation: "digit", "character", "fixed character", "underscore", "words", "10based", "10ebased"
+    * D: maximum digit length, integer
+    * n_samples: Number of training and testing samples, integer
+    * output_dir_name: string name of folder to save model in after it has been fine-tuned
+* Running the notebook from top to bottom will: 
+    1. Load the previously fine-tuned model saved in Google Drive.
+    2. Generate testing dataset with numbers of specified digit D.
+    3. Compute the model accuracy using the generated testing set.
 
 ## Results/Insights
 ![Figure 2. T5-Base Performance](/results/t5-base-performance.png)
