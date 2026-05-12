@@ -5,7 +5,7 @@
 This repository reproduces the findings from “Investigating the Limitations of Transformers with Simple Arithmetic” by Rodrigo Nogueira, Zhiying Jiang, and Jimmy Lin. The paper investigates how different number representations affect transformer performance on addition and subtraction tasks. The authors train the T5 (Text-to-Text Transfer Transformer) models on synthetic arithmetic datasets using different tokenization schemes, including subword representation (e.g. “456”), character-level representation (e.g. “4 5 6”), and position-token representation (e.g. “4 10e2 5 10e1 6 10e0”).  
 
 ## Chosen Result
-We specifically aimed to reproduce the finding that using position-token representations for addition and subtraction operations allowed the model to perform at a higher accuracy than subword and character-level representations. This result was the paper’s main contribution and demonstrates that model performance depends on numerical representation, rather than model scale or training size alone.
+We specifically aimed to reproduce the finding that using position-token representations for addition and subtraction operations allowed the model to perform at a higher accuracy than subword and character-level representations. This result was the paper’s main contribution and demonstrates that model performance depends on numerical representation, rather than model scale or training size alone. The figure below is the findings from the original paper.
 ![Original Paper Results](original-paper-results.png)
 
 ## GitHub Contents
