@@ -6,15 +6,15 @@ This repository reproduces the findings from “Investigating the Limitations of
 
 ## Chosen Result
 We specifically aimed to reproduce the finding that using position-token representations for addition and subtraction operations allowed the model to perform at a higher accuracy than subword and character-level representations. This result was the paper’s main contribution and demonstrates that model performance depends on numerical representation, rather than model scale or training size alone.
-[INCLUDE FIGURE]
+![Original Paper Results](original-paper-results.png)
 
 ## GitHub Contents
-This repository contains two .ipynb files. One notebook that contains the code, which reproduces the paper, specifically generating the datasets, converting inputs into their proper numerical representation, fine-tuning the model with training datasets, and computing model performance with testing accuracy. The other notebook contains code for testing how well the models generalize on addition problems using numbers of unseen lengths.
+This repository contains two .ipynb files. 
+* Main.ipynb: Contains the code, which reproduces the paper, specifically generating the datasets, converting inputs into their proper numerical representation, fine-tuning the model with training datasets, and computing model performance with testing accuracy. 
+* Generalize.ipynb: Contains code for testing how well the models generalize on addition problems using numbers of unseen lengths.
 
 ## Re-implementation Details
 
-
-## Reproduction Steps
 Models: HuggingFace [T5-Small](https://huggingface.co/google-t5/t5-small) and [T5-Base](https://huggingface.co/google-t5/t5-base) 
 
 Training Set: Synthetically generate 1000 examples with operands of varying lengths using balanced sampling. 
@@ -29,10 +29,23 @@ Re-implementation Approach:
 
 Challenges/Modifications: Because of Google Colab memory limts, we were constrained by our batch sizes and model input and output sequence length limits. We had to make modifications to the original approach by decreasing the batch size as well as model input and output max token sequence length.
 
+## Reproduction Steps
+
 ## Results/Insights
+![Figure 2. T5-Base Performance](/results/t5-base-performance.png)
+These results support the paper’s argument that the surface form of number representations significantly impacts a transformer’s ability to learn arithmetic, and that tokenization is a component of current transformer designs that may need improvement.
+![Figure 5. T5-Base Generalization Performance](/results/generalization-performance.png)
+Accuracy decreases as input digit length increases, indicating limited length generalization in addition tasks. The D=2 model generalizes relatively well to longer inputs likely because its constrained training distribution encourages the model to learn digit-wise arithmetic patterns rather than length-specific patterns. 
+
 
 ## Conclusion
+Improving performance depends not just on using larger models, but on structuring inputs well. The way information is represented can determine whether a model learns real patterns or surface-level cues. Good encoding is just as important as model scale. 
 
 ## References
+* Nogueira, R., Jiang, Z., & Lin, J. (2021). Investigating the limitations of transformers with simple arithmetic tasks. arXiv. https://arxiv.org/abs/2102.13019
+* Raffel, C., Shazeer, N., Roberts, A., Lee, K., Narang, S., Matena, M., Zhou, Y., Li, W., & Liu, P. J. (2019). Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer. arXiv:1910.10683. https://arxiv.org/abs/1910.10683 
+* Thomas Wolf, Lysandre Debut, Victor Sanh, Julien Chaumond, Clement Delangue, Anthony Moi, Pierric Cistac, Tim Rault, Rémi Louf, Morgan Funtowicz, and Jamie Brew. (2019). HuggingFace’s Transformers: State-of-the-art Natural Language Processing. CoRR abs/1910.03771 (2019). arXiv:1910.03771 http://arxiv.org/abs/1910.03771
+
 
 ## Acknowledgements
+We would like to thank the instructors and course staff of CS 4782 at Cornell University for their guidance and feedback throughout this project. Additionally, we acknowledge the authors of “Investigating the Limitations of Transformers with Simple Arithmetic” for providing the foundation of this re-implementation study.
