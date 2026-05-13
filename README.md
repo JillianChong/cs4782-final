@@ -30,6 +30,8 @@ Re-implementation Approach:
 Challenges/Modifications: Because of Google Colab memory limts, we were constrained by our batch sizes and model input and output sequence length limits. We had to make modifications to the original approach by decreasing the batch size as well as model input and output max token sequence length.
 
 ## Reproduction Steps
+**Note:** These Jupyter notebooks are best run in Google Colab to access GPU resources (T4 GPU). Upload the .ipynb files to Google Colab and ensure you have a Google Drive account for saving/loading models.
+
 Main.ipynb:
 * Connect to GPU (We used T4 GPU).
 * In the 4th cell from the top, edit the desired details.
