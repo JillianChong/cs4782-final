@@ -71,6 +71,7 @@ Accuracy decreases as input digit length increases, indicating limited length ge
 ## Conclusion
 Improving performance depends not just on using larger models, but on structuring inputs well. The way information is represented can determine whether a model learns real patterns or surface-level cues. Good encoding is just as important as model scale. 
 
+
 ## References
 * Nogueira, R., Jiang, Z., & Lin, J. (2021). Investigating the limitations of transformers with simple arithmetic tasks. arXiv. https://arxiv.org/abs/2102.13019
 * Raffel, C., Shazeer, N., Roberts, A., Lee, K., Narang, S., Matena, M., Zhou, Y., Li, W., & Liu, P. J. (2019). Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer. arXiv:1910.10683. https://arxiv.org/abs/1910.10683 
